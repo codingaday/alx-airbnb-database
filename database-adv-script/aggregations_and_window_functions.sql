@@ -12,13 +12,21 @@ GROUP BY
 ORDER BY
     total_bookings DESC;
 
-  -- Rank Properties by Total Bookings (Using RANK() Window Function)
+  -- Full Query with RANK() and ROW_NUMBER()
 
   SELECT
     P.property_id,
     P.name AS property_name,
     COUNT(B.booking_id) AS total_bookings,
-    RANK() OVER (ORDER BY COUNT(B.booking_id) DESC) AS booking_rank
+
+    RANK() OVER (
+        ORDER BY COUNT(B.booking_id) DESC
+    ) AS booking_rank,
+
+    ROW_NUMBER() OVER (
+        ORDER BY COUNT(B.booking_id) DESC
+    ) AS booking_row_number
+
 FROM
     Property AS P
 LEFT JOIN
