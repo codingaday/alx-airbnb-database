@@ -16,14 +16,13 @@ SELECT
     U.phone_number,
     U.role,
     U.created_at AS user_created_at
-FROM
-    [Booking] B
+FROM Booking AS B
 INNER JOIN
-    [User] U ON B.user_id = U.user_id;
+    User AS U ON B.user_id = U.user_id;
 
 -- Query: All Properties and Their Reviews (Even If None)
 
-Edit
+
 SELECT
     P.property_id,
     P.name AS property_name,
@@ -37,10 +36,8 @@ SELECT
     R.rating,
     R.comment,
     R.created_at AS review_created_at
-FROM
-    [Property] P
-LEFT JOIN
-    [Review] R ON P.property_id = R.property_id
+FROM Property AS P
+LEFT JOIN Review AS R ON P.property_id = R.property_id
 ORDER BY
     P.name, R.created_at;
   
@@ -61,9 +58,7 @@ SELECT
     B.total_price,
     B.status,
     B.created_at AS booking_created_at
-FROM
-    [User] U
-FULL OUTER JOIN
-    [Booking] B ON U.user_id = B.user_id
+FROM User AS U
+FULL OUTER JOIN Booking AS B ON U.user_id = B.user_id
 ORDER BY
     U.user_id, B.booking_id;
