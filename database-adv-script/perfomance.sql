@@ -36,7 +36,7 @@ ORDER BY b.start_date DESC;
 
 
 
- -- Step 2: Analyze Key Sections of the Output
+-- Step 2: Analyze Key Sections of the Output
 --Sample Output Breakdown:
 --You might get something like:
 
